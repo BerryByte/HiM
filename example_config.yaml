@@ -1,0 +1,24 @@
+# general arguments
+data_path: "/data/doid-mixed" # similarly, u can load doid-mixed,  wordnet-mixed, wordnet-multi, snomed-multi, foodon-mixed
+
+
+pretrained: "sentence-mamba16M"
+model_type: "him"
+apply_hard_negatives: True
+num_epochs: 10
+train_batch_size: 256
+eval_batch_size: 512
+eval_train: False  # evaluate on training data or not
+
+# HiM arguments
+apply_triplet_loss: True
+learning_rate: 1e-5 
+warmup_steps: 500
+loss:
+  cluster:
+    weight: 1.0
+    margin: 5.0
+    # positive_margin: 1.0  # additional margin used when apply_triplet_loss is set to False
+  centri:
+    weight: 1.0
+    margin: 0.1
